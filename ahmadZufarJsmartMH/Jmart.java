@@ -12,9 +12,15 @@ public class Jmart
     public static void main(String args[])
     {
         System.out.println("Warm-Up Program_Ahmad Zufar A_1906300662");
- 
         
         System.out.println("getPromo : " + getPromo());
+        System.out.println("getCustomer : " + getCustomer());
+        System.out.println("getDiscountPercentage : " + getDiscountPercentage(1000, 0));
+        System.out.println("getDiscountedPrice : " + getDiscountPrice(1000,10.0f));
+        System.out.println("getOriginalPrice : " + getOriginalPrice(1000, 0.0f));
+        System.out.println("getComissionMultiplier : " + getComissionMultiplier());
+        System.out.println("getAdjustedPrice : " + getAdjustedPrice(1000));
+        System.out.println("getAdminFee : " + getAdminFee(1000));
     }
 
     public static int getPromo(){
