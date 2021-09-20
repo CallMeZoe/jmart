@@ -4,5 +4,10 @@ comment0.text=\r\n\ Write\ a\ description\ of\ class\ Jmart\ here.\r\n\r\n\ @aut
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
 comment2.params=
-comment2.target=Product\ create()
-numComments=3
+comment2.target=Product\ createProduct()
+comment2.text=public\ static\ Product\ create(){\r\n\ \ \ \ \ \ \ \ PriceTag\ priceTag\ \=\ new\ PriceTag(80000);\r\n\ \ \ \ \ \ \ \ Product\ product\ \=\ new\ Product("BUMI",500,false,priceTag,\r\n\ \ \ \ \ \ \ \ ProductCategory.BOOK);\r\n\ \ \ \ \ \ \ \ return\ product;\r\n}
+comment3.params=
+comment3.target=Coupon\ createCoupun()
+comment4.params=args
+comment4.target=ShipmentDuration\ createShipmentDuration(java.lang.String[])
+numComments=5
