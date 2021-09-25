@@ -62,14 +62,6 @@ public class Coupon extends Recognizable implements FileParser
         return false;
     }
     
-    public Object write()
-    {
-        return null;
-    }
     
-    public static Object newInstance(String content)
-    {
-        return null;
-    }
 
 }

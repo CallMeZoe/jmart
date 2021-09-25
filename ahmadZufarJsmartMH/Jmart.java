@@ -11,7 +11,7 @@ public class Jmart
 {
     public static void main(String args[])
     {
-        System.out.println("Modul 2 PT_Ahmad Zufar A_1906300662");
+        System.out.println("Modul 3 CS_Ahmad Zufar A_1906300662");
     }
 
     /*public static Product create(){
@@ -19,7 +19,7 @@ public class Jmart
         Product product = new Product("BUMI",500,false,priceTag,
         ProductCategory.BOOK);
         return product;
-    }*/
+    }
     
     public static Product createProduct()
     {
@@ -38,5 +38,5 @@ public class Jmart
     public static ShipmentDuration createShipmentDuration (String args[])
     {
         return new ShipmentDuration(ShipmentDuration.INSTANT, ShipmentDuration.REGULER);
-    }
+    }*/
 }

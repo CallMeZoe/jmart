@@ -42,13 +42,5 @@ public class Payment extends Transaction implements FileParser
         return false;
     }
     
-    public Object write()
-    {
-        return null;
-    }
     
-    public static Object newInstance(String content)
-    {
-        return null;
-    }
 }
