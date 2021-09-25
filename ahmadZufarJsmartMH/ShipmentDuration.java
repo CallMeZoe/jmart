@@ -31,6 +31,5 @@ public class ShipmentDuration
     public boolean isDuration(ShipmentDuration reference) {
         return (this.bit & reference.bit) == reference.bit;
     }
-    
-    
+ 
 }

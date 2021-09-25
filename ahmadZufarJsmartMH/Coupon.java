@@ -7,10 +7,10 @@ package ahmadZufarJsmartMH;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Coupon
+public class Coupon extends Recognizable implements FileParser
 {
     public enum Type{
-        DISCOUNT, REBATE
+        DISCOUNT, REBATE;
     }
     
     public final String name;
@@ -20,7 +20,9 @@ public class Coupon
     public final double minimum;
     private boolean used;
     
-    public Coupon(String name, int code, Type type, double cut, double minimum){
+    public Coupon(int id, String name, int code, Type type, double cut, double minimum)
+    {
+        super(id);
         this.name = name;
         this.code = code;
         this.type = type;
@@ -53,6 +55,21 @@ public class Coupon
         }
         else return 0.0;
     }
-
+    
+    @Override
+    public boolean read(String content)
+    {
+        return false;
+    }
+    
+    public Object write()
+    {
+        return null;
+    }
+    
+    public static Object newInstance(String content)
+    {
+        return null;
+    }
 
 }

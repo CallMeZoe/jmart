@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Payment
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Payment\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=id\ buyerId\ product\ shipmentDuration
+comment1.target=Payment(int,\ int,\ Product,\ ShipmentDuration)
+comment2.params=id\ buyerId\ storeId\ productId\ shipmentDuration
+comment2.target=Payment(int,\ int,\ int,\ int,\ ShipmentDuration)
+comment3.params=
+comment3.target=boolean\ validate()
+comment4.params=
+comment4.target=Transaction\ perform()
+comment5.params=content
+comment5.target=boolean\ read(java.lang.String)
+comment6.params=
+comment6.target=java.lang.Object\ write()
+comment7.params=content
+comment7.target=java.lang.Object\ newInstance(java.lang.String)
+numComments=8
