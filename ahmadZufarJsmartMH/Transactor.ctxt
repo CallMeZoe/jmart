@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Transactor
+comment0.text=\r\n\ Abstract\ class\ Transaction\ -\ write\ a\ description\ of\ the\ class\ here\r\n\r\n\ @author\ Zufar\r\n\ @version\ 27/09/2021\r\n
+comment1.params=
+comment1.target=boolean\ validate()
+comment2.params=
+comment2.target=Invoice\ perform()
+numComments=3

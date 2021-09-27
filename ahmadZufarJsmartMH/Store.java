@@ -4,9 +4,10 @@ package ahmadZufarJsmartMH;
 /**
  * Write a description of class Store here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Zufar
+ * @version 27/09/2021
  */
+
 public class Store extends Recognizable implements FileParser
 {
     public String name;
@@ -27,10 +28,14 @@ public class Store extends Recognizable implements FileParser
         this.phoneNumber = phoneNumber;
     }
     
+    public String toString() {
+        return "name: " + this.name + 
+                "\naddress: " + this.address + 
+                "\nphoneNumber: " + this.phoneNumber;
+    }
+    
     @Override
     public boolean read(String content){
         return false;
-    }
-    
-    
+    }  
 }

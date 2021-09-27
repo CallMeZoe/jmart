@@ -4,14 +4,14 @@ package ahmadZufarJsmartMH;
 /**
  * Write a description of class Jmart here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Zufar
+ * @version 27/09/2021
  */
 public class Jmart
 {
     public static void main(String args[])
     {
-        System.out.println("Modul 3 CS_Ahmad Zufar A_1906300662");
+        System.out.println("Modul 3 PT_Ahmad Zufar A_1906300662");
     }
 
     /*public static Product create(){

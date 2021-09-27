@@ -4,8 +4,8 @@ package ahmadZufarJsmartMH;
 /**
  * Write a description of class Recognizable here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Zufar
+ * @version 27/09/2021
  */
 public class Recognizable
 {
