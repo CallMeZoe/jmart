@@ -7,7 +7,7 @@ import java.util.Date;
  * Write a description of class Shipment here.
  *
  * @author Zufar
- * @version 27/09/2021
+ * @version 02/10/2021
  */
 public class Shipment implements FileParser
 {

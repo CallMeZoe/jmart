@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Shipment
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Shipment\ here.\r\n\r\n\ @author\ Zufar\r\n\ @version\ 27/09/2021\r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Shipment\ here.\r\n\r\n\ @author\ Zufar\r\n\ @version\ 02/10/2021\r\n
 comment1.params=address\ shipmentCost\ duration\ receipt
 comment1.target=Shipment(java.lang.String,\ int,\ Shipment.Duration,\ java.lang.String)
 comment2.params=content

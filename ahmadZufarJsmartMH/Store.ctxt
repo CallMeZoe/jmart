@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Store
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Store\ here.\r\n\r\n\ @author\ Zufar\r\n\ @version\ 27/09/2021\r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Store\ here.\r\n\r\n\ @author\ Zufar\r\n\ @version\ 02/10/2021\r\n
 comment1.params=accountId\ name\ address\ phoneNumber
 comment1.target=Store(int,\ java.lang.String,\ java.lang.String,\ java.lang.String)
 comment2.params=account\ name\ address\ phoneNumber

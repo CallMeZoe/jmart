@@ -5,7 +5,7 @@ package ahmadZufarJsmartMH;
  * Write a description of class Product here.
  *
  * @author Zufar
- * @version 27/09/2021
+ * @version 02/10/2021
  */
 class Product extends Recognizable implements FileParser 
 {

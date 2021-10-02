@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
  * Write a description of class Store here.
  *
  * @author Zufar
- * @version 27/09/2021
+ * @version 02/10/2021
  */
 
 public class Store extends Recognizable implements FileParser

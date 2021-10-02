@@ -7,7 +7,7 @@ import java.util.Calendar;
  * Write a description of class Invoice here.
  *
  * @author Zufar
- * @version 27/09/2021
+ * @version 02/10/2021
  */
 public abstract class Invoice extends Recognizable implements FileParser {
     public Date date;
