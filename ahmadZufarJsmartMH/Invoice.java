@@ -1,4 +1,6 @@
 package ahmadZufarJsmartMH;
+import java.util.Date;
+import java.util.Calendar;
 
 
 /**
@@ -8,7 +10,7 @@ package ahmadZufarJsmartMH;
  * @version 27/09/2021
  */
 public abstract class Invoice extends Recognizable implements FileParser {
-    public String date;
+    public Date date;
     public int buyerId;
     public int productId;
     public int complaintId;
@@ -27,7 +29,7 @@ public abstract class Invoice extends Recognizable implements FileParser {
 
     protected Invoice(int id, int buyerId, int productId) {
         super(id);
-        this.date = "Apapun";
+        this.date = new Date();
         this.buyerId = buyerId;
         this.productId = productId;
         this.rating = Rating.NONE;

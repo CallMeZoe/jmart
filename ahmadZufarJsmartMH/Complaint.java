@@ -1,5 +1,6 @@
 package ahmadZufarJsmartMH;
-
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  * Write a description of class Complaint here.
@@ -9,12 +10,12 @@ package ahmadZufarJsmartMH;
  */
 public class Complaint extends Recognizable implements FileParser
 {  
-    public String date;
+    public Date date;
     public String desc;
     
     public Complaint(int id, String desc){
         super(id);
-        this.date = "Apapun";
+        this.date = new Date();
         this.desc = desc;
     }
     
