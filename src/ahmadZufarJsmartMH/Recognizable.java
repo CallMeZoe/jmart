@@ -7,7 +7,7 @@ package ahmadZufarJsmartMH;
  * @author Zufar
  * @version 27/09/2021
  */
-public class Recognizable
+public class Recognizable implements Comparable<Recognizable>
 {
     public final int id;
 
@@ -15,15 +15,30 @@ public class Recognizable
     {
         this.id = id;
     }
-    
-    public boolean equals(Object obj)
-    {
-        if(obj instanceof Recognizable)
+
+    @Override
+    public int compareTo(Recognizable other) {
+        if(id == other.id){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+
+    public static <T extends Recognizable> int getClosingId (Class<T> clazz){
+        return 0;
+    }
+
+    public static <T extends Recognizable> int setClosingId (Class<T> clazz,int id){
+        return 0;
+    }
+
+    public boolean equals(Object other){
+        if(other instanceof Recognizable)
         {
-            Recognizable recog = (Recognizable) obj;
-            if (this.id == recog.id){
-                return true;
-            }
+            Recognizable recog = (Recognizable) other;
+            return this.id == recog.id;
         }
         return false;
     }
