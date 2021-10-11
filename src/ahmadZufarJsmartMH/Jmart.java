@@ -12,7 +12,7 @@ public class Jmart
 {
     public static void main(String args[])
     {
-        System.out.println("Modul 4 PT_Ahmad Zufar A_1906300662");
+        System.out.println("Modul 5 PT_Ahmad Zufar A_1906300662");
         System.out.println(Shipment.Duration.KARGO.getEstimatedArrival(new Date()));
         Complaint complaint = new Complaint(001, "Pengiriman tidak cepat, kurir tersesat");
         System.out.print(complaint);
