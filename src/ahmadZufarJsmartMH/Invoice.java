@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author Zufar
  * @version 02/10/2021
  */
-public abstract class Invoice extends Recognizable implements FileParser {
+public abstract class Invoice extends Recognizable {
     public Date date;
     public int buyerId;
     public int productId;
@@ -36,17 +36,11 @@ public abstract class Invoice extends Recognizable implements FileParser {
     }
 
     protected Invoice(int id, int buyerId, int productId) {
-        super(id);
         this.date = new Date();
         this.buyerId = buyerId;
         this.productId = productId;
         this.rating = Rating.NONE;
         this.status = Status.WAITING_CONFIRMATION;
-    }
-
-    @Override
-    public boolean read(String content) {
-        return false;
     }
 
     public abstract double getTotalPay();

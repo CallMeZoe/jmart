@@ -7,7 +7,7 @@ package ahmadZufarJsmartMH;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Coupon extends Recognizable implements FileParser
+public class Coupon extends Recognizable
 {
     public enum Type{
         DISCOUNT, REBATE;
@@ -19,10 +19,11 @@ public class Coupon extends Recognizable implements FileParser
     public final Type type;
     public final double minimum;
     private boolean used;
+    public double price = 12.500;
+    public double discount = 10;
     
-    public Coupon(int id, String name, int code, Type type, double cut, double minimum)
+    public Coupon(String name, int code, Type type, double cut, double minimum)
     {
-        super(id);
         this.name = name;
         this.code = code;
         this.type = type;
@@ -34,34 +35,24 @@ public class Coupon extends Recognizable implements FileParser
     public boolean isUsed(){
         return used;
     }
-    
-    public boolean canApply(PriceTag priceTag){
-        if(priceTag.getAdjustedPrice() >= minimum && used == false){
+
+    public boolean canApply(Treasury treasury){
+        if(treasury.getAdjustedPrice(price, discount) >= minimum && used == false){
             return true;
         }
         else{
             return false;
         }
     }
-    
-    public double apply(PriceTag priceTag){
+
+    public double apply(Treasury treasury){
         used = true;
-        double value = priceTag.getAdjustedPrice();
-        if (type == Type.DISCOUNT){
-            return (100 - cut) / 100*value;
+        if (type == type.DISCOUNT){
+            return (100 - cut) / 100* treasury.getAdjustedPrice(price, discount);
         }
-        else if (type == Type.REBATE){
-             return value - priceTag.price;
+        else{//type == REBATE
+            return treasury.getAdjustedPrice(price, discount) - treasury.price;
         }
-        else return 0.0;
     }
-    
-    @Override
-    public boolean read(String content)
-    {
-        return false;
-    }
-    
-    
 
 }

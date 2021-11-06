@@ -7,44 +7,35 @@ package ahmadZufarJsmartMH;
  * @author Zufar
  * @version 02/10/2021
  */
-class Product extends Recognizable implements FileParser 
+class Product extends Recognizable
 {
-    public int id = 0;
+    public int accountId;
     public String name;
     public int weight;
     public boolean conditionUsed;
-    public PriceTag priceTag;
+    public double price;
+    public double discount;
+    public byte shipmentPlans;
     public ProductCategory category;
-    public ProductRating rating;
-    public int storeId;
-    public Store store;
-    public Shipment.MultiDuration multiDuration;
- 
-    public Product(int id, int storeId, String name, int weight, boolean conditionUsed,
-                   PriceTag priceTag, ProductCategory category, Shipment.MultiDuration multiDuration){
-        super(id);
-        this.storeId = storeId;
+
+    public Product(int accountId, String name, int weight, boolean conditionUsed,
+                   double price, double discount, ProductCategory category, byte shipmentPlans){
+        this.accountId = accountId;
         this.name = name;
         this.weight = weight;
         this.conditionUsed = conditionUsed;
-        this.priceTag = priceTag;
+        this.price = price;
         this.category = category;
-        this.rating = new ProductRating();
-        this.multiDuration = multiDuration;
+        this.discount = discount;
+        this.shipmentPlans = shipmentPlans;
     }
-    
+
+
     public String toString() {
-        return "Name: " + this.name +
-                "\nWeight: " + this.weight +
-                "\nconditionUsed: " + this.conditionUsed +
-                "\npriceTag: " + this.priceTag +
-                "\ncategory: " + this.category +
-                "\nrating: " + this.rating +
-                "\nstoreId: " + this.storeId;
+        return  "Name : " + this.name + "\nWeight : " + this.weight +
+                "\nconditionUsed : " + this.conditionUsed + "\nprice : " +
+                this.price + "\ncategory : " + this.category + "\ndiscount : " +
+                this.discount + "\naccountId : " + this.accountId;
     }
-    
-    public boolean read(String content)
-    {
-        return false;
-    }
+
 }

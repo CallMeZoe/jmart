@@ -8,20 +8,22 @@ import java.util.regex.Pattern;
  * @author Zufar
  * @version 27/09/2021
  */
-public class Account extends Recognizable implements FileParser
+public class Account extends Recognizable
 {
     public String name;
     public String email;
     public String password;
+    public Store store;
+    public double balance;
     public static final String REGEX_EMAIL = "^[a-zA-Z0-9&*_~]+(\\.[a-zA-Z0-9&*_~]+)*@[a-zA-Z0-9][a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$";
     public static final String REGEX_PASSWORD = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?!.* ).{8,}$";
     
-    public Account(int id, String name, String email, String password)
+    public Account(String name, String email, String password, double balance)
     {
-        super(id);
         this.name = name;
         this.email = email;
         this.password = password;
+        this.balance = balance;
     }
     
     /*public String toString() {
@@ -45,12 +47,5 @@ public class Account extends Recognizable implements FileParser
             return false;
         }
     }
-    
-    @Override
-    public boolean read(String content)
-    {
-        return false;
-    }
-    
-    
+
 }
