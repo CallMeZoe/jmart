@@ -7,7 +7,7 @@ package ahmadZufarJsmartMH;
  * @author Zufar
  * @version 02/10/2021
  */
-class Product extends Recognizable
+class Product extends Serializable
 {
     public int accountId;
     public String name;

@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  * @author Zufar
  * @version 27/09/2021
  */
-public class Account extends Recognizable
+public class Account extends Serializable
 {
     public String name;
     public String email;

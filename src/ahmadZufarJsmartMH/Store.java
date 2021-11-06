@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  * @version 02/10/2021
  */
 
-public class Store extends Recognizable
+public class Store extends Serializable
 {
     public String name;
     public String address;
