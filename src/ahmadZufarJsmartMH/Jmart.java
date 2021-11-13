@@ -85,6 +85,20 @@ public class Jmart
     {
         System.out.println("Modul 6 PT_Ahmad Zufar A_1906300662");
 
+        try {
+            String filepath = "D:\\Prak OOP\\jmart\\src\\goldenSample\\account.json";
+
+            JsonTable<Account> tableAccount = new JsonTable<>(Account.class, filepath);
+            tableAccount.add(new Account("name", "email", "password", 0));
+            tableAccount.writeJson();
+
+            tableAccount = new JsonTable<>(Account.class, filepath);
+            tableAccount.forEach(account -> System.out.println(account.toString()));
+        }
+            catch(Throwable t) {
+            t.printStackTrace();
+        }
+
 //        System.out.println("Account Id: " + new Account(null, null, null, -1).id);
 //        System.out.println("Account Id: " + new Account(null, null, null, -1).id);
 //        System.out.println("Account Id: " + new Account(null, null, null, -1).id);
@@ -93,20 +107,20 @@ public class Jmart
 //        System.out.println("Paymend Id: " + new Payment(-1, -1, -1,  null).id);
 //        System.out.println("Paymend Id: " + new Payment(-1, -1, -1,  null).id);
 
-        try{
-            List<Product> list = read("D:/Prak OOP/jmart/src/goldenSample/randomProductList.json");
+//        try{
+//            List<Product> list = read("D:/Prak OOP/jmart/src/goldenSample/randomProductList.json");
 //            List<Product> filtered = filterByPrice(list,  13000.0,  15000.0);
 //            filtered.forEach(product -> System.out.println(product.price));
 
-            List<Product> filteredName = filterByName(list, "amd", 1, 5);
-            filteredName.forEach(product -> System.out.println(product.name));
-
-            List<Product> filteredAccount = filterByAccountId(list, 3, 0, 5);
-            filteredAccount.forEach(product -> System.out.println(product.name));
-        }catch (Throwable t)
-        {
-            t.printStackTrace();
-        }
+//            List<Product> filteredName = filterByName(list, "amd", 1, 5);
+//            filteredName.forEach(product -> System.out.println(product.name));
+//
+//            List<Product> filteredAccount = filterByAccountId(list, 3, 0, 5);
+//            filteredAccount.forEach(product -> System.out.println(product.name));
+//        }catch (Throwable t)
+//        {
+//            t.printStackTrace();
+//        }
 
 //        String filepath = "D:/Prak OOP/jmart/city.json";
 //        Gson gson = new Gson();
