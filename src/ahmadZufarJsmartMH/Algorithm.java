@@ -458,4 +458,52 @@ public class Algorithm {
         return min;
     }
 
+    public static <T> List<T> paginate(T[] array, int page, int pageSize, Predicate<T> pred){
+        List<T> newList = new ArrayList<>();
+        for(T obj : array)
+        {
+            if(pred.predicate(obj))
+            {
+                newList.add(obj);
+            }
+        }
+        int startIndex = page * pageSize;
+        int endIndex = startIndex + pageSize;
+        List<T> paginatedList;
+        if(endIndex > newList.size())
+        {
+            paginatedList = newList.subList(startIndex, newList.size());
+        }
+        else
+        {
+            paginatedList = newList.subList(startIndex, endIndex);
+        }
+        return paginatedList;
+    }
+
+    public static <T> List<T> paginate(Iterable<T> iterable, int page, int pageSize, Predicate<T> pred){
+        List<T> newList = new ArrayList<>();
+        Iterator<T> iterator = iterable.iterator();
+        while(iterator.hasNext())
+        {
+            T element = iterator.next();
+            if(pred.predicate(element))
+            {
+                newList.add(element);
+            }
+        }
+        int startIndex = page * pageSize;
+        int endIndex = startIndex + pageSize;
+        List<T> paginatedList;
+        if(endIndex > newList.size())
+        {
+            paginatedList = newList.subList(startIndex, newList.size());
+        }
+        else
+        {
+            paginatedList = newList.subList(startIndex, endIndex);
+        }
+        return paginatedList;
+    }
+
 }

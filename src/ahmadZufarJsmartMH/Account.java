@@ -26,11 +26,11 @@ public class Account extends Serializable
         this.balance = balance;
     }
     
-    /*public String toString() {
+    public String toString() {
         return "name: " + this.name + 
-                "\nemail: " + this.name + 
+                "\nemail: " + this.email +
                 "\npassword: " + this.password;
-    }*/
+    }
     
     public boolean validate(){
         Pattern REGEX_EMAIL = Pattern.compile(this.REGEX_EMAIL);

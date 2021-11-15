@@ -10,13 +10,13 @@ import java.util.ArrayList;
  * @version 02/10/2021
  */
 public abstract class Invoice extends Serializable {
-    public Date date;
+    public final Date date;
     public int buyerId;
     public int productId;
     public int complaintId;
     public Rating rating;
-    public Status status;
-    public ArrayList<Record> history = new ArrayList<Record>();
+//    public Status status;
+//    public ArrayList<Record> history = new ArrayList<Record>();
 
     enum Rating {
         NONE, BAD, NEUTRAL, GOOD
@@ -25,7 +25,7 @@ public abstract class Invoice extends Serializable {
     enum Status {
         WAITING_CONFIRMATION, CANCELLED,
         ON_PROGRESS, ON_DELIVERY, COMPLAINT,
-        FINISHED, FAILED
+        FINISHED, FAILED, DELIVERED
     }
     
     class Record{
@@ -39,8 +39,9 @@ public abstract class Invoice extends Serializable {
         this.buyerId = buyerId;
         this.productId = productId;
         this.rating = Rating.NONE;
-        this.status = Status.WAITING_CONFIRMATION;
+        this.complaintId = -1;
+//        this.status = Status.WAITING_CONFIRMATION;
     }
 
-    public abstract double getTotalPay();
+    public abstract double getTotalPay(Product product);
 }
