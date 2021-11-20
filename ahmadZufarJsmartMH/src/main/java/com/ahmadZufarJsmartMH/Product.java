@@ -1,6 +1,8 @@
 package com.ahmadZufarJsmartMH;
 
 
+import com.ahmadZufarJsmartMH.dbjson.Serializable;
+
 /**
  * Write a description of class Product here.
  *

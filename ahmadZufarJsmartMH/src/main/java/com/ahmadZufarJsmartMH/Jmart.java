@@ -1,5 +1,6 @@
 package com.ahmadZufarJsmartMH;
 
+import com.ahmadZufarJsmartMH.dbjson.JsonDBEngine;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -18,9 +19,16 @@ import com.google.gson.stream.JsonReader;
 public class Jmart
 {
 
+    public static long DELIVERED_LIMIT_MS;
+    public static long ON_DELIVERY_LIMIT_MS;
+    public static long ON_PROGRESS_LIMIT_MS;
+    public static long WAITING_CONF_LIMIT_MS;
+
     public static void main(String args[])
     {
+        JsonDBEngine.Run(Jmart.class);
         SpringApplication.run(Jmart.class, args);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEngine.join()));
 
 
 //        System.out.println("Modul 7 PT_Ahmad Zufar A_1906300662");
@@ -112,11 +120,6 @@ public class Jmart
 //        Account account = new Account("Zufar", "zufar.zufar@ui.ac.id", "Zufar123", 10);
 //        System.out.println(account.validate());
     }
-
-    public static long DELIVERED_LIMIT_MS;
-    public static long ON_DELIVERY_LIMIT_MS;
-    public static long ON_PROGRESS_LIMIT_MS;
-    public static long WAITING_CONF_LIMIT_MS;
 
     public static boolean paymentTimekeeper(Payment payment) {
         Payment.Record record = payment.history.get(payment.history.size() - 1);
