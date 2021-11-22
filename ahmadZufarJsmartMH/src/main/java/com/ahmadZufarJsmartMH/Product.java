@@ -9,7 +9,7 @@ import com.ahmadZufarJsmartMH.dbjson.Serializable;
  * @author Zufar
  * @version 02/10/2021
  */
-class Product extends Serializable
+public class Product extends Serializable
 {
     public int accountId;
     public String name;

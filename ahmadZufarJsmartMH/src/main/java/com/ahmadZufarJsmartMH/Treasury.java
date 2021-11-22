@@ -25,7 +25,7 @@ public class Treasury
         this.discount = discount;
     }
 
-    public double getAdjustedPrice(double price, double discount){
+    public static double getAdjustedPrice(double price, double discount){
         return getDiscountedPrice(price, discount) + getAdminFee(price, discount);
     }
 

@@ -11,49 +11,61 @@ import com.ahmadZufarJsmartMH.dbjson.Serializable;
  */
 public class Coupon extends Serializable
 {
-    public enum Type{
-        DISCOUNT, REBATE;
-    }
-    
-    public final String name;
-    public final int code;
+
+    // instance variables - replace the example below with your own
+    public  final int code;
     public final double cut;
-    public final Type type;
+    public final String name;
     public final double minimum;
-    private boolean used;
-    public double price = 12.500;
-    public double discount = 10;
-    
-    public Coupon(String name, int code, Type type, double cut, double minimum)
+    private boolean used = false;
+    public final Type type;
+
+    public enum Type
     {
+        DISCOUNT,REBATE
+    }
+
+    public Coupon( String name, int code, Type type, double cut, double minimum)
+    {
+
+        this.used = false;
         this.name = name;
         this.code = code;
         this.type = type;
         this.cut = cut;
         this.minimum = minimum;
-        this.used = false;
     }
-    
-    public boolean isUsed(){
+
+
+    public boolean isUsed()
+    {
         return used;
     }
 
-    public boolean canApply(Treasury treasury){
-        if(treasury.getAdjustedPrice(price, discount) >= minimum && used == false){
+    public boolean canApply (double price, double discount)
+    {
+
+        if (Treasury.getAdjustedPrice(price, discount)>=minimum && used == false)
+        {
             return true;
         }
-        else{
+        else
+        {
             return false;
         }
     }
 
-    public double apply(Treasury treasury){
-        used = true;
-        if (type == type.DISCOUNT){
-            return (100 - cut) / 100* treasury.getAdjustedPrice(price, discount);
+    public double apply (double price, double discount)
+    {
+        this.used =  true;
+
+        if (type == Type.DISCOUNT)
+        {
+            return Treasury.getAdjustedPrice(price, discount)* (1-(cut/100));
         }
-        else{//type == REBATE
-            return treasury.getAdjustedPrice(price, discount) - treasury.price;
+        else //type == type.REBATE
+        {
+            return Treasury.getAdjustedPrice(price, discount)- price;
         }
     }
 
