@@ -29,7 +29,7 @@ public class Treasury
         return getDiscountedPrice(price, discount) + getAdminFee(price, discount);
     }
 
-    public double getAdminFee(double price, double discount){
+    public static double getAdminFee(double price, double discount){
         double adminFee;
         if(getDiscountedPrice(price, discount) <= BOTTOM_PRICE){
             adminFee = BOTTOM_FEE;
@@ -41,7 +41,7 @@ public class Treasury
         return adminFee;
     }
 
-    private double getDiscountedPrice(double price, double discount){
+    private static double getDiscountedPrice(double price, double discount){
         if(discount >= 100.0){
             return 0.0;
         }
