@@ -20,7 +20,7 @@ public class AccountController implements BasicGetController<Account>
 	public static final Pattern REGEX_PATTERN_EMAIL = Pattern.compile(REGEX_EMAIL);
 	public static final Pattern REGEX_PATTERN_PASSWORD = Pattern.compile(REGEX_PASSWORD);
 
-	@JsonAutowired(value = Account.class, filepath = "D:\\Prak OOP\\jmart\\ahmadZufarJsmartMH\\src\\main\\account.json")
+	@JsonAutowired(value = Account.class, filepath = "C:\\Users\\Zufar\\Desktop\\Prak_OOP\\jmart\\ahmadZufarJsmartMH\\src\\main\\account.json")
 	public static JsonTable<Account> accountTable;
 
 	public JsonTable<Account> getJsonTable() {
@@ -28,128 +28,104 @@ public class AccountController implements BasicGetController<Account>
 	}
 
 	@PostMapping("/login")
-	Account login(@RequestParam String email, @RequestParam String password)
+	Account login(
+			@RequestParam String email,
+			@RequestParam String password
+	)
 	{
-		for(Account account : accountTable)
-		{
-			String passwordHash = null;
-			try {
-				MessageDigest md = MessageDigest.getInstance("MD5");
-				md.update(password.getBytes());
-				byte[] bytes = md.digest();
-				StringBuilder sb = new StringBuilder();
-
-				for(int i=0; i< bytes.length ;i++)
-				{
-					sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-				}
-				passwordHash = sb.toString();
-			} catch (NoSuchAlgorithmException e) {
-				e.printStackTrace();
-			}
-			boolean emailIsMatched = account.email.equals(email);
-			boolean passwordIsMatched = account.password.equals(passwordHash);
-			if(emailIsMatched && passwordIsMatched)
-			{
+		for(Account account : accountTable) {
+			if(account.email.equals(email) && account.password.equals(hashPassword(password)))
 				return account;
-			}
 		}
 		return null;
 	}
 
 	@PostMapping("/register")
-	Account register(@RequestParam String name, @RequestParam String email, @RequestParam String password)
+	Account register
+			(
+					@RequestParam String name,
+					@RequestParam String email,
+					@RequestParam String password
+			)
 	{
-		Matcher matcherEmail = REGEX_PATTERN_EMAIL.matcher(email);
-		Matcher matcherPassword = REGEX_PATTERN_PASSWORD.matcher(password);
-		boolean isUnique = true;
-		for(Account a : accountTable)
-		{
-			if(a.email.equals(email))
-			{
-				isUnique = false;
+		Matcher emailMatcher = REGEX_PATTERN_EMAIL.matcher(email);
+		boolean emailMatch = emailMatcher.find();
+		Matcher passwordMatcher = REGEX_PATTERN_PASSWORD.matcher(password);
+		boolean passwordMatch = passwordMatcher.find();
+		boolean unique = true;
+
+		for(Account acc: accountTable){
+			if(acc.email.equals(email)){
+				unique = false;
 				break;
 			}
 		}
-		if(matcherEmail.find() && matcherPassword.find() && (!name.isBlank()) && isUnique)
-		{
-			String passwordHash = null;
-			try {
-				MessageDigest md = MessageDigest.getInstance("MD5");
-				md.update(password.getBytes());
-				byte[] bytes = md.digest();
-				StringBuilder sb = new StringBuilder();
 
-				for(int i=0; i< bytes.length ;i++)
-				{
-					sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-				}
-				passwordHash = sb.toString();
-			} catch (NoSuchAlgorithmException e) {
-				e.printStackTrace();
-			}
-			Account account = new Account(name, email, passwordHash, 0.0);
-			accountTable.add(account);
-			return account;
+		if(!name.isBlank() && emailMatch && passwordMatch && unique){
+
+			Account regAccount = new Account(name, email, hashPassword(password), 0);
+			accountTable.add(regAccount);
+			return regAccount;
+
+		} else {
+			return null;
 		}
-		return null;
 	}
 
 	@PostMapping("/{id}/registerStore")
-	Store registerStore(@PathVariable int id, @RequestParam String name, @RequestParam String address, @RequestParam String phoneNumber)
+	Store registerStore
+			(
+					@PathVariable int id,
+					@RequestParam String name,
+					@RequestParam String address,
+					@RequestParam String phoneNumber
+			)
 	{
-		Account a = Algorithm.<Account> find(accountTable, obj -> obj.id == id);
-		if(a == null || a.store != null)
+		Account acc = Algorithm.<Account> find(accountTable, obj -> obj.id == id);
+		if(acc == null || acc.store != null)
 		{
 			return null;
 		}
-		a.store = new Store(name, address, phoneNumber, 0.0);
-		return a.store;
+		acc.store = new Store(name,address, phoneNumber, 0.0);
+		return acc.store;
+//		return null;
 	}
 
-	@PostMapping("/{id}/topUp")
-	boolean topUp(@PathVariable int id, @RequestParam double balance)
-	{
-		Account a = getById(id);
-		if(a != null)
-		{
-			a.balance += balance;
+	@PostMapping("{id}/topUp")
+	boolean topUp(
+			@PathVariable int id,
+			@RequestParam double balance
+	){
+		Account acc = getById(id);
+		if(acc != null){
+			acc.balance = acc.balance + balance;
 			return true;
+		} else {
+			return false;
 		}
-		return false;
 	}
 
-//	public static String MD5(String passwordToHash) throws NoSuchAlgorithmException {
-//		String generatedPassword = null;
-//
-//		MessageDigest md = MessageDigest.getInstance("MD5");
-//		md.update(passwordToHash.getBytes());
-//		byte[] bytes = md.digest();
-//		StringBuilder sb = new StringBuilder();
-//
-//		for(int i=0; i< bytes.length ;i++)
-//		{
-//			sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-//		}
-//		generatedPassword = sb.toString();
-//		return generatedPassword;
-//	}
+	public String hashPassword(String password){
+		try{
+			String generatedPassword = null;
+
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			md.update(password.getBytes());
+			byte[] bytes = md.digest();
+
+			StringBuilder sb = new StringBuilder();
+			for(int i = 0; i < bytes.length; i++){
+				sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+			}
+			generatedPassword = sb.toString();
+			return generatedPassword;
+		} catch (NoSuchAlgorithmException e){
+			e.printStackTrace();
+			return password;
+		}
+	}
 
 
-//	@GetMapping
-//	String index() { return "account page"; }
-//
-//	@PostMapping("/register")
-//	Account register
-//	(
-//		@RequestParam String name,
-//		@RequestParam String email,
-//		@RequestParam String password
-//	)
-//	{
-//		return new Account(name, email, password, 0);
-//	}
-//
-//	@GetMapping("/{id}")
-//	String getById(@PathVariable int id) { return "account id " + id + " not found!"; }
+	@GetMapping
+	String index() { return "account page"; }
 }
