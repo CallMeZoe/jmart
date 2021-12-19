@@ -5,12 +5,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Write a description of class Store here.
+ * Merupakan Class Store sebagai store pada Jmart
  *
  * @author Zufar
- * @version 02/10/2021
+ * @version 19/12/2021
  */
-
 public class Store extends Serializable
 {
     public String name;

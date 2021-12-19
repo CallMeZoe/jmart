@@ -2,10 +2,10 @@ package com.ahmadZufarJsmartMH;
 
 
 /**
- * Write a description of class ShipmentDuration here.
+ * Merupakan Class Shipment Duration untuk durasi shipment yang dipilih
  *
  * @author Zufar
- * @version 27/09/2021
+ * @version 19/12/2021
  */
 public class ShipmentDuration
 {

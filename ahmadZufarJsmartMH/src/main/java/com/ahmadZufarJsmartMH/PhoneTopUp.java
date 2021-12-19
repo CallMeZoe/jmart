@@ -1,5 +1,11 @@
 package com.ahmadZufarJsmartMH;
 
+/**
+ * Merupakan Class PhoneTopUp yang mengatur top up pada phone si account
+ *
+ * @author Zufar
+ * @version 19/12/2021
+ */
 public class PhoneTopUp extends Invoice{
     String phoneNumber;
     Status status;

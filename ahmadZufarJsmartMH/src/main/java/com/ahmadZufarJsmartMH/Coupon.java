@@ -4,10 +4,10 @@ package com.ahmadZufarJsmartMH;
 import com.ahmadZufarJsmartMH.dbjson.Serializable;
 
 /**
- * Write a description of class Coupon here.
+ * Merupakan Class Coupon untuk mengatur coupon pada Jmart
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Zufar
+ * @version 19/12/2021
  */
 public class Coupon extends Serializable
 {

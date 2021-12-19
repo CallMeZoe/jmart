@@ -2,10 +2,10 @@ package com.ahmadZufarJsmartMH;
 
 
 /**
- * Enumeration class ProductCategory - write a description of the enum class here
+ * Merupakan Enum ProductCategory yang memberikan keseluruhan list kategori dari productnya
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Zufar
+ * @version 19/12/2021
  */
 public enum ProductCategory
 {

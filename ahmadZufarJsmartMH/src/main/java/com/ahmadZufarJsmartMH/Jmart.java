@@ -10,10 +10,10 @@ import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 
 /**
- * Write a description of class Jmart here.
+ * Merupakan class utama untuk melakukan run dari backend aplikasi Jmart
  *
  * @author Zufar
- * @version 08/11/2021
+ * @version 19/12/2021
  */
 @SpringBootApplication
 public class Jmart
@@ -29,96 +29,6 @@ public class Jmart
         JsonDBEngine.Run(Jmart.class);
         SpringApplication.run(Jmart.class, args);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEngine.join()));
-
-
-//        System.out.println("Modul 7 PT_Ahmad Zufar A_1906300662");
-//
-//        try
-//        {
-//            // sesuaikan argument dibawah dengan lokasi resource file yang Anda unduh di EMAS!
-//            JsonTable<Payment> table = new JsonTable<>(Payment.class, "D:/Prak OOP/jmart/src/goldenSample/randomPaymentList.json");
-//            // membuat thread untuk payment pool
-//            ObjectPoolThread<Payment>paymentPool =new ObjectPoolThread<Payment>("Thread-pp", Jmart::paymentTimekeeper);
-//            // menjalankan thread (ingat menggunakan start bukan run), run melakukan instruksi dalam current thread
-//            paymentPool.start();
-//            //tambahkan seluruh payment hasil baca ke dalam pool
-//            table.forEach(payment ->paymentPool.add(payment));
-//            // berikan sinyal untuk keluar dari routine apabila seluruh objek telah di proses
-//            while (paymentPool.size() != 0);
-//            paymentPool.exit();
-//            // tunggu hingga thread selesai di eksekusi
-//            while (paymentPool.isAlive());
-//            // thread telah berhasil di selesaikan
-//            System.out.println("Thread exited successfully");
-//            // cek hasil output
-//            Gson gson = new Gson();
-//            table.forEach(payment -> {
-//                String history = gson.toJson(payment.history);
-//                System.out.println(history);
-//            });
-//        }
-//        catch (Throwable t)
-//        {
-//            t.printStackTrace();
-//        }
-
-//        try {
-//            String filepath = "D:/Prak OOP/jmart/src/goldenSample/account.json";
-//
-//            JsonTable<Account> tableAccount = new JsonTable<>(Account.class, filepath);
-//            tableAccount.add(new Account("name", "email", "password", 0));
-//            tableAccount.writeJson();
-//
-//            tableAccount = new JsonTable<>(Account.class, filepath);
-//            tableAccount.forEach(account -> System.out.println(account.toString()));
-//
-//        } catch (Throwable t) {
-//            t.printStackTrace();
-//        }
-
-
-
-//        System.out.println("Account Id: " + new Account(null, null, null, -1).id);
-//        System.out.println("Account Id: " + new Account(null, null, null, -1).id);
-//        System.out.println("Account Id: " + new Account(null, null, null, -1).id);
-//
-//        System.out.println("Paymend Id: " + new Payment(-1, -1, -1,  null).id);
-//        System.out.println("Paymend Id: " + new Payment(-1, -1, -1,  null).id);
-//        System.out.println("Paymend Id: " + new Payment(-1, -1, -1,  null).id);
-
-//        try{
-//            List<Product> list = read("D:/Prak OOP/jmart/src/goldenSample/randomProductList.json");
-//            List<Product> filtered = filterByPrice(list,  13000.0,  15000.0);
-//            filtered.forEach(product -> System.out.println(product.price));
-
-//            List<Product> filteredName = filterByName(list, "amd", 1, 5);
-//            filteredName.forEach(product -> System.out.println(product.name));
-//
-//            List<Product> filteredAccount = filterByAccountId(list, 3, 0, 5);
-//            filteredAccount.forEach(product -> System.out.println(product.name));
-//        }catch (Throwable t)
-//        {
-//            t.printStackTrace();
-//        }
-
-//        String filepath = "D:/Prak OOP/jmart/city.json";
-//        Gson gson = new Gson();
-//        try{
-//            BufferedReader br = new BufferedReader(new FileReader(filepath));
-//            Country input = gson.fromJson(br, Country.class);
-//            System.out.println("name: " + input.name);
-//            System.out.println("population: " + input.population);
-//            System.out.println("states: ");
-//            input.listOfStates.forEach(state -> System.out.println(state));
-//        }
-//        catch (IOException e){
-//            e.printStackTrace();
-//        }
-
-//        Complaint complaint = new Complaint("Pengiriman tidak cepat, kurir tersesat");
-//        System.out.print(complaint);
-//        Account account = new Account("Zufar", "zufar.zufar@ui.ac.id", "Zufar123", 10);
-//        System.out.println(account.validate());
     }
 
     public static boolean paymentTimekeeper(Payment payment) {
@@ -241,30 +151,4 @@ public class Jmart
         }
         return products;
     }
-
-    /*public static Product create(){
-        PriceTag priceTag = new PriceTag(80000);
-        Product product = new Product("BUMI",500,false,priceTag,
-        ProductCategory.BOOK);
-        return product;
-    }
-
-    public static Product createProduct()
-    {
-        PriceTag priceTag = new PriceTag(80000);
-        Product product = new Product("BUMI",500,false,priceTag,
-        ProductCategory.BOOK);
-        return product;
-    }
-
-    public static Coupon createCoupun()
-    {
-       Coupon coupon = new Coupon("BackToSchool",1, Coupon.Type.DISCOUNT, 10, 1000);
-       return coupon;
-    }
-
-    public static ShipmentDuration createShipmentDuration (String args[])
-    {
-        return new ShipmentDuration(ShipmentDuration.INSTANT, ShipmentDuration.REGULER);
-    }*/
 }

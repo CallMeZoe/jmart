@@ -5,10 +5,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Write a description of class Account here.
+ * Merupakan Class Account untuk mengatur segala akses pada objek account
  *
  * @author Zufar
- * @version 27/09/2021
+ * @version 19/12/2021
  */
 public class Account extends Serializable
 {

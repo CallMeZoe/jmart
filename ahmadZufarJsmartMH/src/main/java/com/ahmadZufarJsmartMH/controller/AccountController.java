@@ -11,6 +11,10 @@ import java.security.NoSuchAlgorithmException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Class untuk mengatur perubahan pada objek account
+ */
+
 @RestController
 @RequestMapping("/account")
 public class AccountController implements BasicGetController<Account>
@@ -23,10 +27,20 @@ public class AccountController implements BasicGetController<Account>
 	@JsonAutowired(value = Account.class, filepath = "C:\\Users\\Zufar\\Desktop\\Prak_OOP\\jmart\\ahmadZufarJsmartMH\\src\\main\\account.json")
 	public static JsonTable<Account> accountTable;
 
+	/**
+	 * Method untuk memberi list berisi objek Account yang ada pada json
+	 * @return  list yang berisikan objek Account yang terdaftar pada file json
+	 */
 	public JsonTable<Account> getJsonTable() {
 		return accountTable;
 	}
 
+	/**
+	 * Method untuk memastikan data kredensial saat melakukan login
+	 * @param email email dari objek account
+	 * @param password password dari objek account
+	 * @return objek account yang memiliki data yang cocok, bila tidak cocok keluarkan null
+	 */
 	@PostMapping("/login")
 	Account login(
 			@RequestParam String email,
@@ -39,6 +53,14 @@ public class AccountController implements BasicGetController<Account>
 		}
 		return null;
 	}
+
+	/**
+	 * Method untuk pembuatan objek account saat register serta memastikan data yang dimasukkan sesuai
+	 * @param name nama dari objek account
+	 * @param email email dari objek account
+	 * @param password password dari objek account
+	 * @return register account apabila datanya sesuai, bila tidak maka keluarkan null
+	 */
 
 	@PostMapping("/register")
 	Account register
@@ -72,25 +94,33 @@ public class AccountController implements BasicGetController<Account>
 		}
 	}
 
+	/**
+	 * Method untuk melakukan pendaftaran store pada objek account
+	 * @param id id dari objek account yang melakukan pendaftaran store
+	 * @param name nama dari store yang didaftarkan
+	 * @param address alamat dari store yang didaftarkan
+	 * @param phoneNumber nomor telefon dari  store yang didaftarkan
+	 * @return objek Store yang berhasil didaftarkan, dan jika tidak keluarkan null
+	 */
+
 	@PostMapping("/{id}/registerStore")
-	Store registerStore
-			(
-					@PathVariable int id,
-					@RequestParam String name,
-					@RequestParam String address,
-					@RequestParam String phoneNumber
-			)
+	Store registerStore(@PathVariable int id, @RequestParam String name, @RequestParam String address, @RequestParam String phoneNumber)
 	{
-		Account acc = Algorithm.<Account> find(accountTable, obj -> obj.id == id);
-		if(acc == null || acc.store != null)
+		Account a = Algorithm.<Account> find(accountTable, obj -> obj.id == id);
+		if(a == null || a.store != null)
 		{
 			return null;
 		}
-		acc.store = new Store(name,address, phoneNumber, 0.0);
-		return acc.store;
-//		return null;
+		a.store = new Store(name, address, phoneNumber, 0.0);
+		return a.store;
 	}
 
+	/**
+	 * Method untuk melakukan Top up pada balance untuk suatu account yang digunakan pada aplikasi
+	 * @param id id dari objek Account yang ingin melakukan top up
+	 * @param balance balance dari objek Account yang ingin melakukan top up
+	 * @return true jika balance pada objek Account berhasil di top up, jika tidak keluarkan false
+	 */
 	@PostMapping("{id}/topUp")
 	boolean topUp(
 			@PathVariable int id,
@@ -125,6 +155,13 @@ public class AccountController implements BasicGetController<Account>
 		}
 	}
 
+	/**
+	 * Method untuk mengambil objek Account dari file json sesuai id nya
+	 * @param id id dari objek Account
+	 * @return objek Account yang memiliki id yang sesuai dengan id yang diberikan sebagai parameter
+	 */
+	@GetMapping("/{id}")
+	public Account getByAccountId(@PathVariable int id) { return getById(id); }
 
 	@GetMapping
 	String index() { return "account page"; }

@@ -4,10 +4,10 @@ package com.ahmadZufarJsmartMH;
 import com.ahmadZufarJsmartMH.dbjson.Serializable;
 
 /**
- * Write a description of class Product here.
+ * Merupakan Class Product yang mengatur mengenai product di Jmart
  *
  * @author Zufar
- * @version 02/10/2021
+ * @version 19/12/2021
  */
 public class Product extends Serializable
 {

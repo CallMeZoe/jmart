@@ -5,10 +5,10 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 /**
- * Write a description of class Complaint here.
+ * Merupakan Class Complaint untuk mengatur complaint pada Jmart
  *
  * @author Zufar
- * @version 02/10/2021
+ * @version 19/12/2021
  */
 public class Complaint extends Serializable
 {  

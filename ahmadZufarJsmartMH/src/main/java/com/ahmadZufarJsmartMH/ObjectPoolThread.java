@@ -4,6 +4,12 @@ import java.lang.Object;
 import java.util.Vector;
 import java.util.function.Function;
 
+/**
+ * Merupakan Class ObjectPoolThread untuk multi-threading
+ *
+ * @author Zufar
+ * @version 19/12/2021
+ */
 public class ObjectPoolThread<T> extends Thread{
     private boolean exitSignal = false;
     private Vector<T> objectPool = new Vector<>();

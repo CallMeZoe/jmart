@@ -2,10 +2,10 @@ package com.ahmadZufarJsmartMH;
 
 
 /**
- * Write a description of class PiceTag here.
+ * Merupakan Class Treasury yang berisi harga yang telah di-adjust
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Zufar
+ * @version 19/12/2021
  */
 public class Treasury
 {

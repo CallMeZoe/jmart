@@ -2,10 +2,10 @@ package com.ahmadZufarJsmartMH;
 import java.util.*;
 
 /**
- * Write a description of class Algorithm here.
+ * Merupakan class Algorithm yang menyediakan list algoritma pada aplikasi Jmart
  *
  * @author Zufar
- * @version 11/10/2021
+ * @version 19/12/2021
  */
 public class Algorithm {
 
